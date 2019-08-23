@@ -11,7 +11,6 @@ class Tile:
             if not object.interact_from(self.state):
                 self.objects.remove(object)
 
-
     def add_object(self, object):
         self.objects.append(object)
 

@@ -36,6 +36,7 @@ class SpellEffectCold(SpellEffect):
         temperature = 0 - (25 * self.level)
         return Water(temperature, position, velocity, shape)
 
+
 class SpellEffectEarth(SpellEffect):
     def __init__(self, level):
         SpellEffect.__init__(self, level)
@@ -50,6 +51,3 @@ class SpellEffectTime(SpellEffect):
         self.type = 'time'
         self.setting_type = 'Rate'
         self.base_cost = 10
-
-
-

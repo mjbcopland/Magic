@@ -1,5 +1,6 @@
 from Targeting import *
 from SpellShapes import *
+from SpellEffect import *
 
 
 class Spell:
@@ -12,6 +13,7 @@ class Spell:
         self.affix = None
 
     def decode_incantation(self, position):
+        # TODO: put into another class to map the X -> SpellEffectX Can have a list of (enum, lambda)
         components = self.incantation.split()
         if components[0] == 'Fire':
             self.element = SpellEffectFire(int(components[1]))
@@ -19,8 +21,8 @@ class Spell:
         elif components[0] == 'Cold':
             self.element = SpellEffectCold(int(components[1]))
             self.action = components[2]
-        if components[3] == 'Cone':
-            self.shape = Square
+        if components[3] == 'Square':
+            self.shape = Square()
         if components[4] == 'Point':
             self.target = Point(int(components[5]), position)
 

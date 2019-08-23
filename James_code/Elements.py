@@ -1,4 +1,3 @@
-
 class Elements:
     def __init__(self, position, velocity, shape):
         self.position = position
@@ -18,7 +17,7 @@ class Fire(Elements):
         self.temperature = temperature
 
     def interact_on(self, state):
-        state["Temperature"] = (state["Temperature"] + self.temperature)/2
+        state["Temperature"] = (state["Temperature"] + self.temperature) / 2
         return state
 
     def interact_from(self, state):
@@ -31,13 +30,14 @@ class Fire(Elements):
         else:
             return True
 
+
 class Water(Elements):
     def __init__(self, temperature, position, velocity, shape):
         Elements.__init__(self, position, velocity, shape)
         self.temperature = temperature
 
     def interact_on(self, state):
-        state["Temperature"] = (state["Temperature"] + self.temperature)/2
+        state["Temperature"] = (state["Temperature"] + self.temperature) / 2
         return state
 
     def interact_from(self, state):

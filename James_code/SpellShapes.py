@@ -17,7 +17,7 @@ class SpellShapes(ABC):
 class Square(SpellShapes):
     def __init__(self):
         super()
-        self.edge_size = 2
+        self.edge_size = 3
 
     def get_relative_affected_tiles(self):
         affected_tiles = []

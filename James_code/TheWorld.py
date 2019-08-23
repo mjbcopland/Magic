@@ -1,6 +1,7 @@
 from Tile import Tile
 from SpellEffect import SpellEffect
 from pprint import pprint
+import copy
 
 
 class Singleton(type):
@@ -12,7 +13,11 @@ class Singleton(type):
         return cls._instances[cls]
 
 
+WORLD_SIZE = 10
+
+
 class TheWorld(metaclass=Singleton):
+
     def __init__(self):
         """
         Only speaks in WorldEffect
@@ -22,7 +27,7 @@ class TheWorld(metaclass=Singleton):
         self.prepare_tiles()
 
     def prepare_tiles(self):
-        self.tiles = [[Tile([x, y]) for x in range(10)] for y in range(10)]
+        self.tiles = [[Tile([x, y]) for x in range(WORLD_SIZE)] for y in range(WORLD_SIZE)]
         return
 
     def add_world_element(self, world_element):
@@ -31,10 +36,11 @@ class TheWorld(metaclass=Singleton):
         :param world_element:
         :return:
         """
-        for tile_co_ords in world_element.shape.get_relative_affected_tiles():
-            x = world_element.position[0] + tile_co_ords[0]
-            y = world_element.position[1] + tile_co_ords[1]
-            self.tiles[x][y].add_object(world_element)
+        for tile_coords in world_element.shape.get_relative_affected_tiles():
+            x = world_element.position[0] + tile_coords[0]
+            y = world_element.position[1] + tile_coords[1]
+            world_element_copy = copy.copy(world_element)
+            self.tiles[x][y].add_object(world_element_copy)
 
     def resolve_tiles(self):
         for i in self.tiles:

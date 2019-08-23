@@ -11,13 +11,16 @@ class TheWorld:
         """
         Only speaks in WorldEffect
         """
-        self.locations = None
+        print("Stating The world.....")
+        self.locations = [[]]
         self.prepareLocations()
 
     def prepareLocations(self):
-        self.locations = [Location(x, y) for x, y in range(10)]
+        self.locations = [[Location(x, y) for x in range(10)] for y in range(10)]
         for i in self.locations:
-            print(i.getInformation())
+            for j in i:
+                print(j.get_information())
+        return
 
 
 

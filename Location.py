@@ -7,4 +7,4 @@ class Location:
         return
 
     def get_information(self):
-        return str(self.position) + " , " + str(self.position[1])
+        return str(self.position) + " with spell effects " + str(len(self.spell_effects))

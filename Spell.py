@@ -9,15 +9,23 @@ class ActionType(Enum):
 
 class Spell:
     def __init__(self, element, origin, shape, action):
+        """
+        Holds information on how the SpellEffects are constructed.
+        :param element of type Element :
+        :param origin:
+        :param shape:
+        :param action:
+        """
         self.element = element
         self.origin = origin
         self.shape = shape
         self.action = action
 
     def cost(self):
-        # formula to calculate from
-        # element, shape
-        #
+        """
+        calculates of this spell.
+        :return:
+        """
         self.element.get_cost() * self.shape.get_cost()
         return
 

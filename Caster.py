@@ -13,6 +13,3 @@ class Caster:
         return spell.cast()
 
 
-james = Caster()
-spell = james.cast_spell()
-print("Nice")

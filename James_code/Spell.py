@@ -1,4 +1,3 @@
-from SpellEffect import *
 from Targeting import *
 from SpellShapes import *
 
@@ -21,7 +20,7 @@ class Spell:
             self.element = SpellEffectCold(int(components[1]))
             self.action = components[2]
         if components[3] == 'Cone':
-            self.shape = Cone
+            self.shape = Square
         if components[4] == 'Point':
             self.target = Point(int(components[5]), position)
 

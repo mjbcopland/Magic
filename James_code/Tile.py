@@ -1,6 +1,3 @@
-from People import *
-
-
 class Tile:
     def __init__(self, coordinates):
         self.coordinates = coordinates
@@ -18,15 +15,5 @@ class Tile:
     def add_object(self, object):
         self.objects.append(object)
 
-
-tile_1 = Tile((0,0))
-Bob = Wizard((0,0), 0)
-spell_effect = Bob.shout('Fire 5 Create Cone Point 5')
-
-Carl = Wizard((0,0), 0)
-spell_effect_2 = Carl.shout('Cold 3 Create Cone Point 5')
-
-tile_1.add_object(spell_effect)
-tile_1.add_object(spell_effect_2)
-tile_1.resolve_tile()
-print('hi')
+    def get_information(self):
+        return str(self.coordinates) + " with world effects " + str(len(self.objects))

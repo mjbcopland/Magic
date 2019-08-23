@@ -1,4 +1,4 @@
-from TheWorld import WorldEffect
+from James_code.TheWorld import WorldEffect
 
 
 class SpellEffect(WorldEffect):

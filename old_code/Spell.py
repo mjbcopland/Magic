@@ -26,8 +26,7 @@ class Spell:
         calculates of this spell.
         :return:
         """
-        self.element.get_cost() * self.shape.get_cost()
-        return
+        return self.element.get_cost() * self.shape.get_cost()
 
     def create(self):
         print("Spell of Fire created.")

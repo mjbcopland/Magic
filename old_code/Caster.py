@@ -1,5 +1,5 @@
-from Spell import Spell, ActionType
-from Element import ElementType
+from old_code.Spell import Spell, ActionType
+from old_code.Element import ElementType
 
 
 class Caster:

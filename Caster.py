@@ -15,4 +15,4 @@ class Caster:
 
 james = Caster()
 spell = james.cast_spell()
-
+print("Nice")

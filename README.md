@@ -1,1 +1,3 @@
 # Magic
+## Spells
+## The World

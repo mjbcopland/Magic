@@ -15,6 +15,7 @@ class Fire(Elements):
     def __init__(self, temperature, position, velocity, shape):
         Elements.__init__(self, position, velocity, shape)
         self.temperature = temperature
+        self.remaining_duration = 2
 
     def interact_on(self, state):
         state["Temperature"] = (state["Temperature"] + self.temperature) / 2
@@ -22,10 +23,11 @@ class Fire(Elements):
 
     def interact_from(self, state):
         self.temperature = state["Temperature"]
+        self.remaining_duration -= 1
         return self.check_status(state)
 
     def check_status(self, state):
-        if self.temperature > 300 and state['Fuel']:
+        if self.temperature > 300 and (state['Fuel'] or self.remaining_duration > 0):
             return self
         else:
             return None
@@ -65,6 +67,17 @@ class Ice(Water):
     def __init__(self, temperature, position, velocity, shape):
         Water.__init__(self, temperature, position, velocity, shape)
 
+    def interact_on(self, state):
+        if (state["Temperature"] + self.temperature)/2 < state["Temperature"]:
+            state["Temperature"] = (state["Temperature"] + (self.temperature*4.5)/2)
+        else:
+            state["Temperature"] = (state["Temperature"] + self.temperature)/2
+
+        if state["Temperature"] < -273:
+            state["Temperature"] = -273
+
+        return state
+
     def check_status(self, state):
         if self.temperature < 0:
             return self
@@ -91,15 +104,17 @@ class Lightning(Elements):
     def __init__(self, power, position, velocity, shape):
         Elements.__init__(self, position, velocity, shape)
         self.power = power
+        self.remaining_duration = 2
 
     def interact_on(self, state):
         return state
 
     def interact_from(self, state):
+        self.remaining_duration -= 1
         return self.check_status(state)
 
     def check_status(self, state):
-        if state['Conductor']:
+        if state['Conductor'] or self.remaining_duration > 0:
             return self
         else:
             return None

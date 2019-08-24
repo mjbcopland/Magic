@@ -5,7 +5,7 @@ theworld = TheWorld()
 
 tile_1 = Tile((0, 0))
 Bob = Wizard((5, 3), 0)
-WorldElement = Bob.shout('Fire 10 Create Square Point 5')
+WorldElement = Bob.shout('Lightning 10 Create Square Point 5')
 
 Carl = Wizard((5, 5), 0)
 WorldElement2 = Carl.shout('Cold 8 Create Square Point 5')

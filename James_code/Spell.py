@@ -21,6 +21,9 @@ class Spell:
         elif components[0] == 'Cold':
             self.element = SpellEffectCold(int(components[1]))
             self.action = components[2]
+        elif components[0] == 'Lightning':
+            self.element = SpellEffectLightning(int(components[1]))
+            self.action = components[2]
         if components[3] == 'Square':
             self.shape = Square()
         elif components[3] == 'Rectangle':

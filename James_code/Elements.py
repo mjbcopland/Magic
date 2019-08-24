@@ -22,13 +22,13 @@ class Fire(Elements):
 
     def interact_from(self, state):
         self.temperature = state["Temperature"]
-        return self.check_status()
+        return self.check_status(state)
 
-    def check_status(self):
-        if self.temperature < 300:
-            return None
-        else:
+    def check_status(self, state):
+        if self.temperature > 300 and state['Fuel']:
             return self
+        else:
+            return None
 
 
 class Water(Elements):
@@ -44,13 +44,15 @@ class Water(Elements):
 
         if state["Temperature"] < -273:
             state["Temperature"] = -273
+
+        state['Conductor'] = True
         return state
 
     def interact_from(self, state):
         self.temperature = state["Temperature"]
-        return self.check_status()
+        return self.check_status(state)
 
-    def check_status(self):
+    def check_status(self, state):
         if self.temperature < 0:
             return Ice(self.temperature, self.position, self.velocity, self.shape)
         elif self.temperature > 100:
@@ -63,7 +65,7 @@ class Ice(Water):
     def __init__(self, temperature, position, velocity, shape):
         Water.__init__(self, temperature, position, velocity, shape)
 
-    def check_status(self):
+    def check_status(self, state):
         if self.temperature < 0:
             return self
         elif self.temperature > 100:
@@ -76,10 +78,28 @@ class Steam(Water):
     def __init__(self, temperature, position, velocity, shape):
         Water.__init__(self, temperature, position, velocity, shape)
 
-    def check_status(self):
+    def check_status(self, state):
         if self.temperature < 0:
             return Ice(self.temperature, self.position, self.velocity, self.shape)
         elif self.temperature > 100:
             return self
         else:
             return Water(self.temperature, self.position, self.velocity, self.shape)
+
+
+class Lightning(Elements):
+    def __init__(self, power, position, velocity, shape):
+        Elements.__init__(self, position, velocity, shape)
+        self.power = power
+
+    def interact_on(self, state):
+        return state
+
+    def interact_from(self, state):
+        return self.check_status(state)
+
+    def check_status(self, state):
+        if state['Conductor']:
+            return self
+        else:
+            return None

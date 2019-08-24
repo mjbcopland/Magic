@@ -37,6 +37,18 @@ class SpellEffectCold(SpellEffect):
         return Water(temperature, position, velocity, shape)
 
 
+class SpellEffectLightning(SpellEffect):
+    def __init__(self, level):
+        SpellEffect.__init__(self, level)
+        self.type = 'Lightning'
+        self.setting_type = 'Power'
+        self.base_cost = 1
+
+    def create(self, position, velocity, shape):
+        power = (100 * self.level)
+        return Lightning(power, position, velocity, shape)
+
+
 class SpellEffectEarth(SpellEffect):
     def __init__(self, level):
         SpellEffect.__init__(self, level)

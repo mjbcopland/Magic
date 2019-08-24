@@ -37,10 +37,10 @@ class TheWorld(metaclass=Singleton):
         :return:
         """
         for tile_coords in world_element.shape.get_relative_affected_tiles():
-            x = world_element.position[0] + tile_coords[0]
-            y = world_element.position[1] + tile_coords[1]
+            y = world_element.position[0] + tile_coords[0]
+            x = world_element.position[1] + tile_coords[1]
             world_element_copy = copy.copy(world_element)
-            self.tiles[x][y].add_object(world_element_copy)
+            self.tiles[y][x].add_object(world_element_copy)
 
     def resolve_tiles(self):
         for i in self.tiles:

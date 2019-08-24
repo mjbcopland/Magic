@@ -23,6 +23,8 @@ class Spell:
             self.action = components[2]
         if components[3] == 'Square':
             self.shape = Square()
+        elif components[3] == 'Rectangle':
+            self.shape = Rectangle()
         if components[4] == 'Point':
             self.target = Point(int(components[5]), position)
 

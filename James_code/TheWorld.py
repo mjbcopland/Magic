@@ -54,6 +54,5 @@ class TheWorld(metaclass=Singleton):
         objects = 0
         for i in self.tiles:
             for j in i:
-                if len(j.objects) > 0:
-                    objects += 1
+                objects += len(j.objects)
         return objects

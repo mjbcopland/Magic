@@ -48,11 +48,11 @@ class TheWorld(metaclass=Singleton):
                 j.resolve_tile()
 
     def print_grid(self):
-        pprint([[len(j.objects) for j in i] for i in self.tiles])
+        pprint([[len(j.elements) for j in i] for i in self.tiles])
 
-    def get_total_objects(self):
-        objects = 0
+    def get_total_elements(self):
+        elements = 0
         for i in self.tiles:
             for j in i:
-                objects += len(j.objects)
-        return objects
+                elements += len(j.elements)
+        return elements

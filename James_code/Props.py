@@ -1,9 +1,17 @@
 from Spell import *
 
 
-class Wizard:
+class Props:
     def __init__(self, position, velocity):
         self.position = position
+        self.velocity = velocity
+        self.health = 1
+        self.mana = 1
+
+
+class Wizard(Props):
+    def __init__(self, position, velocity):
+        Props.__init__(self, position, velocity)
         self.velocity = velocity
         self.health = 100
         self.mana = 100

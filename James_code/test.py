@@ -1,5 +1,5 @@
 from TheWorld import *
-from People import Wizard
+from Props import *
 
 theworld = TheWorld()
 

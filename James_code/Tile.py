@@ -7,9 +7,13 @@ class Tile:
     def resolve_tile(self):
         for object in self.objects:
             self.state = object.interact_on(self.state)
+        for objects_index, object in enumerate(self.objects):
+            self.objects[objects_index] = object.interact_from(self.state)
+
         for object in self.objects:
-            if not object.interact_from(self.state):
+            if object is None:
                 self.objects.remove(object)
+
 
     def add_object(self, object):
         self.objects.append(object)

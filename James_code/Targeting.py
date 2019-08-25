@@ -23,7 +23,7 @@ class Self(Target):
 
 
 class Point(Target):
-    def __init__(self,level, starting_position):
+    def __init__(self, level, starting_position):
         Target.__init__(self, starting_position)
         self.base_cost = 1
         self.level = level

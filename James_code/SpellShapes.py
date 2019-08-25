@@ -1,4 +1,4 @@
-from math import ceil
+from math import ceil, floor
 from abc import ABC, abstractmethod
 
 
@@ -21,7 +21,7 @@ class Square(SpellShapes):
         affected_tiles = []
         for y in range(self.edge_size):
             for x in range(self.edge_size):
-                affected_tiles.append((y - ceil(self.edge_size / 2), x - ceil(self.edge_size / 2)))
+                affected_tiles.append((y - floor(self.edge_size / 2), x - floor(self.edge_size / 2)))
         return affected_tiles
 
 

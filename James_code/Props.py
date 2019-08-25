@@ -6,7 +6,7 @@ class Props:
 
 
 class Wizard(Props):
-    def __init__(self, velocity):
+    def __init__(self, velocity=0):
         Props.__init__(self, velocity)
         self.velocity = velocity
         self.health = 100

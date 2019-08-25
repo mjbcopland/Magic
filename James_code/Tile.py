@@ -17,7 +17,7 @@ class Tile:
 
     def spell_phase(self):
         for prop in self.props:
-            if inspect.isclass(prop, Wizard):
+            if inspect.isinstance(prop, Wizard):
                 speech_log = prop.return_speech()
                 spell = Spell(speech_log)
                 spell = spell.decode_incantation(self.coordinates)

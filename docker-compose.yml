@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  backend:
+    build: backend/
+    volumes:
+      - ./backend:/app:cached
+  frontend:
+    build: frontend/
+    command: npm start
+    volumes:
+      - ./frontend:/app:cached
+      - /app/node_modules
+  nginx:
+    build: nginx/
+    depends_on:
+      - backend
+      - frontend
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/config:/etc/nginx:cached

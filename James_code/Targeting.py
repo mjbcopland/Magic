@@ -12,7 +12,7 @@ class Target:
 
 
 class Self(Target):
-    def __init__(self, starting_position, base_cost=None, level=None):
+    def __init__(self, level, starting_position):
         Target.__init__(self, starting_position)
         self.base_cost = 1
         self.level = 1

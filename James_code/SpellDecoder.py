@@ -11,8 +11,10 @@ class SpellDecoder:
                                    'Cold': lambda string_num, action_string: SpellEffectCold(int(string_num), action_string),
                                    'Lightning': lambda string_num, action_string: SpellEffectLightning(int(string_num), action_string),
                                    'Earth': lambda string_num, action_string: SpellEffectEarth(int(string_num), action_string)}
-        self.shapes_dict = {'Square': lambda string_num: Square(int(string_num))}
-        self.targeting_dict = {'Point': lambda string_num, position: Point(int(string_num), position)}
+        self.shapes_dict = {'Square': lambda string_num: Square(int(string_num)),
+                            'Rectangle': lambda string_num: Rectangle(int(string_num))}
+        self.targeting_dict = {'Point': lambda string_num, position: Point(int(string_num), position),
+                               'Self': lambda string_num, position: Self(int(string_num), position)}
 
     def decode_spell(self, position):
         spell_components = self.incantation.split()

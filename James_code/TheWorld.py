@@ -34,13 +34,13 @@ class TheWorld(metaclass=Singleton):
         """
         world_position = spell.target.starting_position
         for tile_coords in spell.shape.get_relative_affected_tiles():
-            y = world_position[0] + tile_coords[0]
-            x = world_position[1] + tile_coords[1]
+            y = world_position[1] + tile_coords[0]
+            x = world_position[0] + tile_coords[1]
             spell_effect_copy = copy.copy(spell.spell_effect)
             self.tiles[y][x].add_actions(spell_effect_copy)
 
     def resolve_tiles(self):
-        tile_speech = []
+        tile_speech_log = []
         for i in self.tiles:
             for j in i:
                 tile_speech_log = j.speech_phase()

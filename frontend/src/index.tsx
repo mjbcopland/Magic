@@ -12,6 +12,8 @@ import { FocusStyleManager } from '@blueprintjs/core';
 
 import { App } from './app';
 
+import '~/index.scss';
+
 FocusStyleManager.onlyShowFocusOnTabs();
 
 ReactDOM.render(<App />, document.getElementById('root'));

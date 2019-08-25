@@ -1,6 +1,7 @@
 from Elements import *
 from Props import *
 
+
 class SpellEffect:
     def __init__(self, level, action_type):
         self.type = None
@@ -9,6 +10,7 @@ class SpellEffect:
         self.base_cost = None
         self.start = None
         self.level = level
+        self.velocity = 0
 
     def cost(self):
         return
@@ -16,9 +18,9 @@ class SpellEffect:
     def act(self, elements, props):
         if self.action_type == 'Create':
             try:
-                elements.append(self.create_element(0))
+                elements.append(self.create_element(self.velocity))
             except:
-                props.append(self.create_prop(0))
+                props.append(self.create_prop(self.velocity))
         return elements, props
 
 

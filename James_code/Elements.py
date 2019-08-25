@@ -1,5 +1,5 @@
 class Elements:
-    def __init__(self, velocity=0):
+    def __init__(self, velocity):
         self.velocity = velocity
 
     def interact_on(self, state):

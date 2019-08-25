@@ -1,10 +1,33 @@
+from Props import *
+from Spell import *
+import inspect
+
+
 class Tile:
     def __init__(self, coordinates):
         self.coordinates = coordinates
+        self.spell = []
+        self.actions = []
         self.elements = []
+        self.props = []
         self.state = {"Temperature": 24, "Time": 1, "Gravity": 9.81, "Fuel": False, "Conductor": False}
 
     def resolve_tile(self):
+        self.elements_phase(self)
+
+    def spell_phase(self):
+        for prop in self.props:
+            if inspect.isclass(prop, Wizard):
+                speech_log = prop.return_speech()
+                spell = Spell(speech_log)
+                spell = spell.decode_incantation(self.coordinates)
+                spell.cast()
+
+    def action_phase(self):
+        for action in self.actions:
+            print('foo')
+
+    def elements_phase(self):
         self.state['Fuel'] = False
         self.state['Conductor'] = False
 
@@ -15,6 +38,9 @@ class Tile:
 
         self.elements = list(filter(None, self.elements))
 
+    def props_phase(self):
+        for prop in self.props:
+            print('foo')
 
     def add_object(self, object):
         self.elements.append(object)

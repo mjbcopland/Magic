@@ -1,6 +1,4 @@
-from node:10
-
-entrypoint []
+from node:10-alpine
 
 workdir /app
 
@@ -13,3 +11,5 @@ run npm ci
 copy src .
 
 cmd npm run build
+
+entrypoint []

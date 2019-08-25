@@ -5,6 +5,7 @@ class SpellEffect:
     def __init__(self, level):
         self.type = None
         self.setting_type = None
+        self.action_type = None
         self.base_cost = None
         self.start = None
         self.level = level

@@ -11,6 +11,9 @@ const package = require('./package.json');
 
 const config = {
   common: {
+    output: {
+      publicPath: '/',
+    },
     resolve: {
       alias: {
         '~': path.resolve(__dirname, 'src/'),
@@ -47,7 +50,7 @@ const config = {
         },
       ],
     },
-    plugins: [new HtmlWebPackPlugin({ hash: true, title: package.name, template: 'src/index.ejs' })],
+    plugins: [new HtmlWebPackPlugin({ hash: true, title: 'Magic', template: 'src/index.ejs' })],
     optimization: {
       minimizer: [new TerserPlugin({ parallel: true, sourceMap: true }), new OptimizeCSSAssetsPlugin()],
     },

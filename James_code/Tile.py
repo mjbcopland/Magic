@@ -12,8 +12,8 @@ class Tile:
         self.state = {"Temperature": 24, "Time": 1, "Gravity": 9.81, "Fuel": False, "Conductor": False}
 
     def resolve_tile(self):
+        self.action_phase()
         self.elements_phase()
-
 
     def speech_phase(self):
         self.speech_log =[]
@@ -26,7 +26,8 @@ class Tile:
 
     def action_phase(self):
         for action in self.actions:
-            print('foo')
+            self.elements.append(action.act())
+        self.actions = []
 
     def elements_phase(self):
         self.state['Fuel'] = False

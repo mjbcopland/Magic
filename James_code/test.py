@@ -1,25 +1,16 @@
 from TheWorld import *
-from SpellDecoder import *
+from Props import Wizard
 
-theworld = TheWorld()
+the_world = TheWorld()
 
-
-#WorldElement = Bob.shout('Cold 1 Create Square Point 5')
-#WorldElement2 = Bob.shout('Fire 2 Create Square Point 5')
-#WorldElement3 = Bob.shout('Lightning 2 Create Square Point 5')
-#Carl = Wizard((5, 5), 0)
-#WorldElement3 = Carl.shout('Cold 8 Create Square Point 5')
-
-spelldecoder = SpellDecoder('Lightning 2 Create Square 3 Point 5')
-spell = spelldecoder.decode_spell((5,5))
-
-
-theworld.add_spell(spell)
-#theworld.resolve_tiles()
-theworld.print_action_grid()
-#theworld.resolve_tiles()
-#theworld.print_grid()
-print(theworld.get_total_elements())
+Carl = Wizard(0)
+the_world.tiles[5][5].props.append(Carl)
+Carl.shout('Cold 1 Create Square 3 Point 5')
+Carl.shout('Fire 2 Create Square 3 Point 5')
+Carl.shout('Lightning 2 Create Square 3 Point 5')
+the_world.resolve_tiles()
+the_world.print_action_grid()
+print(the_world.get_total_elements())
 
 
 

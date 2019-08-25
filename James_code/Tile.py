@@ -1,5 +1,4 @@
 from Props import *
-from SpellDecoder import *
 import inspect
 
 
@@ -9,16 +8,21 @@ class Tile:
         self.actions = []
         self.elements = []
         self.props = []
+        self.speech_log = []
         self.state = {"Temperature": 24, "Time": 1, "Gravity": 9.81, "Fuel": False, "Conductor": False}
 
     def resolve_tile(self):
-#        self.elements_phase(self)
-        pass
+        self.elements_phase()
 
-    def spell_phase(self):
+
+    def speech_phase(self):
+        self.speech_log =[]
         for prop in self.props:
-            if inspect.isinstance(prop, Wizard):
-                speech_log = prop.return_speech()
+            if isinstance(prop, Wizard):
+                one_person_log = prop.return_speech()
+                for speech in one_person_log:
+                    self.speech_log.append(speech)
+        return self.speech_log
 
     def action_phase(self):
         for action in self.actions:
@@ -40,7 +44,6 @@ class Tile:
             print('foo')
 
     def add_actions(self, action):
-        print("Added one action")
         self.actions.append(action)
 
     def get_information(self):

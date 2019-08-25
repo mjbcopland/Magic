@@ -1,8 +1,7 @@
 from Tile import Tile
-from SpellEffect import SpellEffect
 from pprint import pprint
 import copy
-
+from SpellDecoder import *
 
 class Singleton(type):
     _instances = {}
@@ -41,6 +40,17 @@ class TheWorld(metaclass=Singleton):
             self.tiles[y][x].add_actions(spell_effect_copy)
 
     def resolve_tiles(self):
+        tile_speech = []
+        for i in self.tiles:
+            for j in i:
+                tile_speech_log = j.speech_phase()
+                for speech in tile_speech_log:
+                    if not speech is None:
+                        spelldecoder = SpellDecoder(speech)
+                        spell = spelldecoder.decode_spell(j.coordinates)
+                        self.add_spell(spell)
+
+
         for i in self.tiles:
             for j in i:
                 j.resolve_tile()

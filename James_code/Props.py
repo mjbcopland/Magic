@@ -14,9 +14,9 @@ class Wizard(Props):
         self.said = []
 
     def shout(self, string):
-        return self.said.append(string)
+        self.said.append(string)
 
-    def return_speech_log(self):
-        speech_log = self.said
+    def return_speech(self):
+        speech = self.said
         self.said = []
-        return speech_log
+        return speech

@@ -1,4 +1,5 @@
 from Props import *
+from Elements import *
 import inspect
 
 
@@ -26,7 +27,7 @@ class Tile:
 
     def action_phase(self):
         for action in self.actions:
-            self.elements.append(action.act())
+            self.elements, self.props = action.act(self.elements, self.props)
         self.actions = []
 
     def elements_phase(self):

@@ -1,5 +1,5 @@
 from Elements import *
-
+from Props import *
 
 class SpellEffect:
     def __init__(self, level, action_type):
@@ -13,8 +13,14 @@ class SpellEffect:
     def cost(self):
         return
     
-    def act(self):
-        return self.create(0)
+    def act(self, elements, props):
+        if self.action_type == 'Create':
+            try:
+                elements.append(self.create_element(0))
+            except:
+                props.append(self.create_prop(0))
+        return elements, props
+
 
 class SpellEffectFire(SpellEffect):
     def __init__(self, level, action_type):
@@ -23,7 +29,7 @@ class SpellEffectFire(SpellEffect):
         self.setting_type = 'Temperature'
         self.base_cost = 1
 
-    def create(self, velocity):
+    def create_element(self, velocity):
         temperature = 400 + (100 * self.level)
         return Fire(temperature, velocity)
 
@@ -35,7 +41,7 @@ class SpellEffectCold(SpellEffect):
         self.setting_type = 'Temperature'
         self.base_cost = 1
 
-    def create(self, velocity):
+    def create_element(self, velocity):
         temperature = 0 - (25 * self.level)
         return Water(temperature, velocity)
 
@@ -47,7 +53,7 @@ class SpellEffectLightning(SpellEffect):
         self.setting_type = 'Power'
         self.base_cost = 1
 
-    def create(self, velocity):
+    def create_element(self, velocity):
         power = (100 * self.level)
         return Lightning(power, velocity)
 
@@ -58,6 +64,10 @@ class SpellEffectEarth(SpellEffect):
         self.type = 'Earth'
         self.setting_type = 'Weight'
         self.base_cost = 1
+
+    def create_prop(self, velocity):
+        health = self.level * 50
+        return Boulder(velocity, health)
 
 
 class SpellEffectTime(SpellEffect):

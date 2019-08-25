@@ -4,23 +4,17 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { hot } from 'react-hot-loader/root';
 
-import { Navbar } from '@blueprintjs/core';
-
 import { DarkMode } from '~/components/dark-mode';
 import { ErrorBoundary } from '~/components/error-boundary';
-import { Main } from '~/routes/main';
+import { Navigation } from '~/components/navigation';
 
-import { name as title } from '../package.json';
+import { Main } from '~/routes/main';
 
 export const App = hot(() => (
   <DarkMode.Provider>
     <BrowserRouter>
       <ErrorBoundary>
-        <Navbar>
-          <Navbar.Group>
-            <Navbar.Heading>{title}</Navbar.Heading>
-          </Navbar.Group>
-        </Navbar>
+        <Navigation />
         <Switch>
           <Route component={Main} />
         </Switch>

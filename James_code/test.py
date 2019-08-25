@@ -1,6 +1,5 @@
 from TheWorld import *
-from Props import *
-from Spell import *
+from SpellDecoder import *
 
 theworld = TheWorld()
 
@@ -11,8 +10,8 @@ theworld = TheWorld()
 #Carl = Wizard((5, 5), 0)
 #WorldElement3 = Carl.shout('Cold 8 Create Square Point 5')
 
-spell = Spell('Lightning 2 Create Square Point 5')
-spell.decode_incantation((5,5))
+spelldecoder = SpellDecoder('Lightning 2 Create Square 3 Point 5')
+spell = spelldecoder.decode_spell((5,5))
 
 
 theworld.add_spell(spell)

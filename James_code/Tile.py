@@ -1,5 +1,5 @@
 from Props import *
-from Spell import *
+from SpellDecoder import *
 import inspect
 
 
@@ -19,9 +19,6 @@ class Tile:
         for prop in self.props:
             if inspect.isinstance(prop, Wizard):
                 speech_log = prop.return_speech()
-                spell = Spell(speech_log)
-                spell = spell.decode_incantation(self.coordinates)
-                spell.cast()
 
     def action_phase(self):
         for action in self.actions:

@@ -55,8 +55,11 @@ class TheWorld(metaclass=Singleton):
             for j in i:
                 j.resolve_tile()
 
-    def print_grid(self):
+    def print_elements_grid(self):
         pprint([[len(j.elements) for j in i] for i in self.tiles])
+
+    def print_props_grid(self):
+        pprint([[len(j.props) for j in i] for i in self.tiles])
 
     def print_action_grid(self):
         pprint([[len(j.actions) for j in i] for i in self.tiles])

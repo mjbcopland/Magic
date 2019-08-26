@@ -16,7 +16,7 @@ import { Main } from '~/routes/main';
 import { client } from '~/apollo/client';
 
 export const App = hot(() => (
-  <DarkMode.Provider>
+  <DarkMode.HotkeysListener>
     <ApolloProvider client={client}>
       <BrowserRouter>
         <ErrorBoundary>
@@ -28,5 +28,5 @@ export const App = hot(() => (
         </ErrorBoundary>
       </BrowserRouter>
     </ApolloProvider>
-  </DarkMode.Provider>
+  </DarkMode.HotkeysListener>
 ));

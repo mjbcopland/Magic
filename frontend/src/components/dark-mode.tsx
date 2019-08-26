@@ -4,18 +4,14 @@ import { Classes, Hotkey, Hotkeys, HotkeysTarget } from '@blueprintjs/core';
 
 export interface IDarkModeContext {
   enabled: boolean;
-  enable: () => void;
-  disable: () => void;
-  toggle: () => void;
+  enable?: () => void;
+  disable?: () => void;
+  toggle?: () => void;
 }
 
-const _NOP = () => {
-  // do nothing
-};
+const Context = React.createContext<IDarkModeContext>({ enabled: false });
 
-const Context = React.createContext<IDarkModeContext>({ enabled: false, enable: _NOP, disable: _NOP, toggle: _NOP });
-
-export const Provider = HotkeysTarget(
+const HotkeysListener = HotkeysTarget(
   class extends React.Component<{}, { enabled: boolean }> {
     public state = { enabled: false };
 
@@ -51,4 +47,4 @@ export const Provider = HotkeysTarget(
   }
 );
 
-export const DarkMode = { Consumer: Context.Consumer, Provider };
+export const DarkMode = { Context, HotkeysListener };

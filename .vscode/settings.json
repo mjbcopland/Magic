@@ -1,5 +1,10 @@
 {
-  "cSpell.words": ["Interop", "devtool", "typecheck"],
+  "cSpell.words": [
+    "Interop",
+    "devtool",
+    "noqa",
+    "typecheck"
+  ],
   "files.exclude": {
     "**/.venv": true
   },

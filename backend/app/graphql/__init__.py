@@ -1,12 +1,16 @@
 import graphene
 
 from .world import WorldQuery, CreateWorld, DeleteWorld, UpdateWorld
+from .worlds import WorldsQuery
 
 
 class Query(graphene.ObjectType):
-    hello_world = graphene.NonNull(graphene.String, resolver=lambda root, info: "Hello, world!")
+    hello_world = graphene.NonNull(
+        graphene.String, resolver=lambda root, info: "Hello, world!"
+    )
 
     world = WorldQuery.Field()
+    worlds = WorldsQuery.Field()
 
 
 class Mutation(graphene.ObjectType):

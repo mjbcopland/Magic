@@ -12,8 +12,8 @@ class Query(Mutation):
     query Output ObjectType.
     """
 
-    @property
-    def mutate(self):
-        query = getattr(self, "query", None)
+    @classmethod
+    def mutate(cls, *args, **kwargs):
+        query = getattr(cls, "query", None)
         assert query, "All queries must define a query method in it"
-        return query
+        return query(*args, **kwargs)

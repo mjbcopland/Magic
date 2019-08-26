@@ -1,3 +1,3 @@
-from nginx
+from nginx:alpine
 
 copy config /etc/nginx

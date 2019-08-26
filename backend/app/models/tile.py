@@ -1,4 +1,4 @@
-class Tile:
+class OldTile:
     def __init__(self, coordinates):
         self.coordinates = coordinates
         self.elements = []

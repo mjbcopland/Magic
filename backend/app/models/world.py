@@ -1,24 +1,31 @@
 import copy
 from pprint import pprint
 
-from magic.tile import Tile
+from app.models.tile import OldTile
 from util.singleton import Singleton
 
-WORLD_SIZE = 10
+from django.db import models
+
+DEFAULT_WORLD_SIZE = 10
 
 
-class World(metaclass=Singleton):
+class World(models.Model):
+    size = models.IntegerField(default=DEFAULT_WORLD_SIZE)
+
+
+class OldWorld(metaclass=Singleton):
     def __init__(self):
         """
         Only speaks in WorldEffect
         """
         print("Starting The world.....")
+        self.size = DEFAULT_WORLD_SIZE
         self.tiles = [[]]
         self.prepare_tiles()
 
     def prepare_tiles(self):
         self.tiles = [
-            [Tile((x, y)) for x in range(WORLD_SIZE)] for y in range(WORLD_SIZE)
+            [OldTile((x, y)) for x in range(self.size)] for y in range(self.size)
         ]
 
     def add_world_element(self, world_element):

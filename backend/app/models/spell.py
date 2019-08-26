@@ -1,13 +1,13 @@
-from magic.effects import EffectType, FireEffect, ColdEffect, LightningEffect
-from magic.shapes import Square, Rectangle
-from magic.targeting import Point
+from app.models.effect import EffectType, FireEffect, ColdEffect, LightningEffect
+from app.models.shape import Square, Rectangle
+from app.models.targeting import Point
 from util.enums import make_enum
 
 
 SpellAction = make_enum("SpellAction", ("Create", "Absorb", "Displace"))
 
 
-class Spell:
+class SpellObject:
     def __init__(self, incantation):
         self.incantation = incantation
         self.element = None

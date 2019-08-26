@@ -3,11 +3,18 @@ version: "3"
 services:
   backend:
     build: backend/
+    depends_on:
+      - postgres
+    ports:
+      - 8000:8000
     volumes:
       - ./backend:/app:cached
+      - /app/.venv
   frontend:
     build: frontend/
     command: npm start
+    ports:
+      - 8080:8080
     volumes:
       - ./frontend:/app:cached
       - /app/node_modules
@@ -20,3 +27,7 @@ services:
       - 80:80
     volumes:
       - ./nginx/config:/etc/nginx:cached
+  postgres:
+    image: postgres:11-alpine
+    ports:
+      - 5432:5432

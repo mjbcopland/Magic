@@ -1,8 +1,10 @@
-from python:3
+from python:3.7
 
 workdir /app
 
 run pip install poetry
+
+run poetry config settings.virtualenvs.in-project true
 
 copy pyproject.toml .
 
@@ -10,6 +12,6 @@ copy poetry.lock .
 
 run poetry install
 
-copy util .
+copy . .
 
-copy magic .
+cmd poetry run python manage.py runserver 0:8000

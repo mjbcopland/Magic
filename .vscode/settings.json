@@ -1,9 +1,10 @@
 {
-    "cSpell.words": [
-        "Interop",
-        "devtool",
-        "typecheck"
-    ],
-    "python.formatting.provider": "black",
-    "python.pythonPath": "/usr/local/bin/python3"
+  "cSpell.words": ["Interop", "devtool", "typecheck"],
+  "files.exclude": {
+    "**/.venv": true
+  },
+  "python.formatting.provider": "black",
+  "python.pythonPath": "${workspaceFolder}/backend/.venv/bin/python",
+  "python.formatting.blackPath": "${workspaceFolder}/backend/.venv/bin/black",
+  "python.linting.pylintPath": "${workspaceFolder}/backend/.venv/bin/pylint"
 }

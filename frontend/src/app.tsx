@@ -12,6 +12,7 @@ import { Navigation } from '~/components/navigation';
 import { NotFound } from '~/components/not-found';
 
 import { Main } from '~/routes/main';
+import { Worlds } from '~/routes/worlds';
 
 import { client } from '~/apollo/client';
 
@@ -23,6 +24,7 @@ export const App = hot(() => (
           <Navigation />
           <Switch>
             <Route exact strict path="/" component={Main} />
+            <Route strict path="/worlds" component={Worlds} />
             <Route component={NotFound} />
           </Switch>
         </ErrorBoundary>

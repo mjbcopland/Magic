@@ -1,0 +1,13 @@
+query GetWorlds {
+  worlds {
+    id
+    name
+  }
+}
+
+mutation CreateWorld($world: WorldInputObject!) {
+  createWorld(world: $world) {
+    id
+    name
+  }
+}

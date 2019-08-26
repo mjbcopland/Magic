@@ -14,4 +14,5 @@ run poetry install
 
 copy . .
 
-cmd poetry run python manage.py runserver 0:8000
+cmd poetry run python manage.py migrate \
+  && poetry run python manage.py runserver 0:8000

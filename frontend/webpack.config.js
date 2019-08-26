@@ -7,8 +7,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-const package = require('./package.json');
-
 const config = {
   common: {
     output: {
@@ -28,20 +26,12 @@ const config = {
           use: ['html-loader'],
         },
         {
-          include: /\.mp3$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[path][name].[ext]',
-                publicPath: '/',
-              },
-            },
-          ],
-        },
-        {
           include: /\.(sa|sc|c)ss$/,
           use: [{ loader: 'css-loader', options: { modules: true } }, 'sass-loader'],
+        },
+        {
+          include: /\.gql$/,
+          use: ['graphql-tag/loader'],
         },
         {
           include: /\.(j|t)sx?$/,

@@ -1,7 +1,16 @@
 import React from 'react';
 
-import { NonIdealState } from '@blueprintjs/core';
+import { useQuery } from '@apollo/react-hooks';
+import { NonIdealState, Spinner } from '@blueprintjs/core';
+
+import query from '~/graphql/hello-world.gql';
 
 export const Main = () => {
-  return <NonIdealState title="Hello, world!" />;
+  const { error, loading, data } = useQuery(query);
+
+  if (error) throw error;
+
+  const title = loading ? <Spinner size={Spinner.SIZE_SMALL} /> : data.helloWorld;
+
+  return <NonIdealState title={title} />;
 };

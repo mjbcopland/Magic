@@ -1,8 +1,6 @@
-class Element:
-    def __init__(self, position, velocity, shape):
-        self.position = position
+class Elements:
+    def __init__(self, velocity):
         self.velocity = velocity
-        self.shape = shape
 
     def interact_on(self, state):
         return state
@@ -11,9 +9,9 @@ class Element:
         pass
 
 
-class Fire(Element):
-    def __init__(self, temperature, position, velocity, shape):
-        super().__init__(position, velocity, shape)
+class Fire(Elements):
+    def __init__(self, temperature, velocity):
+        Elements.__init__(self, velocity)
         self.temperature = temperature
         self.remaining_duration = 2
 
@@ -33,9 +31,9 @@ class Fire(Element):
             return None
 
 
-class Water(Element):
-    def __init__(self, temperature, position, velocity, shape):
-        super().__init__(position, velocity, shape)
+class Water(Elements):
+    def __init__(self, temperature, velocity):
+        Elements.__init__(self, velocity)
         self.temperature = temperature
 
     def interact_on(self, state):
@@ -56,16 +54,16 @@ class Water(Element):
 
     def check_status(self, state):
         if self.temperature < 0:
-            return Ice(self.temperature, self.position, self.velocity, self.shape)
+            return Ice(self.temperature, self.velocity)
         elif self.temperature > 100:
-            return Steam(self.temperature, self.position, self.velocity, self.shape)
+            return Steam(self.temperature, self.velocity)
         else:
             return self
 
 
 class Ice(Water):
-    def __init__(self, temperature, position, velocity, shape):
-        Water.__init__(self, temperature, position, velocity, shape)
+    def __init__(self, temperature, velocity):
+        Water.__init__(self, temperature, velocity)
 
     def interact_on(self, state):
         if (state["Temperature"] + self.temperature) / 2 < state["Temperature"]:
@@ -88,8 +86,8 @@ class Ice(Water):
 
 
 class Steam(Water):
-    def __init__(self, temperature, position, velocity, shape):
-        Water.__init__(self, temperature, position, velocity, shape)
+    def __init__(self, temperature, velocity):
+        Water.__init__(self, temperature, velocity)
 
     def check_status(self, state):
         if self.temperature < 0:
@@ -100,9 +98,9 @@ class Steam(Water):
             return Water(self.temperature, self.position, self.velocity, self.shape)
 
 
-class Lightning(Element):
-    def __init__(self, power, position, velocity, shape):
-        super().__init__(position, velocity, shape)
+class Lightning(Elements):
+    def __init__(self, power, velocity):
+        Elements.__init__(self, velocity)
         self.power = power
         self.remaining_duration = 2
 

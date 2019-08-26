@@ -6,5 +6,7 @@
   "python.formatting.provider": "black",
   "python.pythonPath": "${workspaceFolder}/backend/.venv/bin/python",
   "python.formatting.blackPath": "${workspaceFolder}/backend/.venv/bin/black",
-  "python.linting.pylintPath": "${workspaceFolder}/backend/.venv/bin/pylint"
+  "python.linting.flake8Path": "${workspaceFolder}/backend/.venv/bin/flake8",
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false
 }

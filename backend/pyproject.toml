@@ -1,3 +1,7 @@
+[tool.black]
+line-length = 120
+target-version = ['py37']
+
 [tool.poetry]
 name = "magic"
 version = "0.1.0"
@@ -11,6 +15,7 @@ networkx = "^2.3"
 django = "^2.2"
 graphene-django = "^2.5"
 psycopg2-binary = "^2.8"
+flake8 = "^3.7"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^18.3-alpha.0", allows-prereleases = true}
